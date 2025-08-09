@@ -25,7 +25,6 @@ jobs:
 
       - name: Build
         env:
-          # Add your public build-time env vars here if needed
           NODE_ENV: production
         run: npm run build
 
@@ -36,11 +35,12 @@ jobs:
           [ -n "${{ secrets.VPS_SSH_KEY }}" ] || { echo 'VPS_SSH_KEY is empty (needs the PRIVATE key contents)'; exit 1; }
 
       - name: Prepare SSH key
+        env:
+          KEY_PATH: ${{ github.workspace }}/vps_key
         run: |
+          printf '%s' "${{ secrets.VPS_SSH_KEY }}" > "$KEY_PATH"
+          chmod 600 "$KEY_PATH"
           mkdir -p ~/.ssh
-          echo "${{ secrets.VPS_SSH_KEY }}" > ~/.ssh/vps_key
-          chmod 600 ~/.ssh/vps_key
-          # Pre-load known_hosts to avoid interactive prompt
           ssh-keyscan -H ${{ secrets.VPS_HOST }} >> ~/.ssh/known_hosts 2>/dev/null || true
 
       - name: Archive production build
@@ -52,7 +52,7 @@ jobs:
         with:
           host: ${{ secrets.VPS_HOST }}
           username: ${{ secrets.VPS_USER }}
-          key_path: ~/.ssh/vps_key
+          key_path: ${{ github.workspace }}/vps_key
           source: "build-artifact.tar.gz"
           target: "~/apps/simple-hide-ai-landing"
 
@@ -61,7 +61,7 @@ jobs:
         with:
           host: ${{ secrets.VPS_HOST }}
           username: ${{ secrets.VPS_USER }}
-          key_path: ~/.ssh/vps_key
+          key_path: ${{ github.workspace }}/vps_key
           script: |
             set -e
             mkdir -p ~/apps/simple-hide-ai-landing/current
@@ -84,5 +84,4 @@ jobs:
               pm2 start ecosystem.config.js
             fi
             pm2 save
-            # Optionally enable PM2 startup
             pm2 startup systemd -u $USER --hp $HOME 
