@@ -34,15 +34,6 @@ jobs:
           [ -n "${{ secrets.VPS_USER }}" ] || { echo 'VPS_USER is empty'; exit 1; }
           [ -n "${{ secrets.VPS_SSH_KEY }}" ] || { echo 'VPS_SSH_KEY is empty (needs the PRIVATE key contents)'; exit 1; }
 
-      - name: Prepare SSH key
-        env:
-          KEY_PATH: ${{ github.workspace }}/vps_key
-        run: |
-          printf '%s' "${{ secrets.VPS_SSH_KEY }}" > "$KEY_PATH"
-          chmod 600 "$KEY_PATH"
-          mkdir -p ~/.ssh
-          ssh-keyscan -H ${{ secrets.VPS_HOST }} >> ~/.ssh/known_hosts 2>/dev/null || true
-
       - name: Archive production build
         run: |
           tar -czf build-artifact.tar.gz .next package.json package-lock.json public next.config.ts ecosystem.config.js
@@ -52,7 +43,7 @@ jobs:
         with:
           host: ${{ secrets.VPS_HOST }}
           username: ${{ secrets.VPS_USER }}
-          key_path: ${{ github.workspace }}/vps_key
+          key: ${{ secrets.VPS_SSH_KEY }}
           source: "build-artifact.tar.gz"
           target: "~/apps/simple-hide-ai-landing"
 
@@ -61,7 +52,7 @@ jobs:
         with:
           host: ${{ secrets.VPS_HOST }}
           username: ${{ secrets.VPS_USER }}
-          key_path: ${{ github.workspace }}/vps_key
+          key: ${{ secrets.VPS_SSH_KEY }}
           script: |
             set -e
             mkdir -p ~/apps/simple-hide-ai-landing/current
