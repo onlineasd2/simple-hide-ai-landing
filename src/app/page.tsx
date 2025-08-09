@@ -190,7 +190,7 @@ export default function Home() {
                                     <a href="https://mailonline.gumroad.com/l/simplehiddenai?wanted=true">5$/month</a>
                                 </button>
                                 <button className="cursor-pointer hover:bg-(--accent-active) hover:text-white transition-colors w-[180px] h-[52px] rounded-[14px] text-white bg-(--color-accent)">
-                                    $48/year(-20%)
+                                    <a href="https://mailonline.gumroad.com/l/onuuv?wanted=true">$48/year(-20%)</a>
                                 </button>
                             </div>
                         </div>
