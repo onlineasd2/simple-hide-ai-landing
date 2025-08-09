@@ -1,0 +1,73 @@
+name: Deploy to VPS
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build
+        env:
+          # Add your public build-time env vars here if needed
+          NODE_ENV: production
+        run: npm run build
+
+      - name: Archive production build
+        run: |
+          tar -czf build-artifact.tar.gz .next package.json package-lock.json public next.config.ts ecosystem.config.js
+
+      - name: Copy files to VPS
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USER }}
+          key: ${{ secrets.VPS_SSH_KEY }}
+          source: "build-artifact.tar.gz"
+          target: "~/apps/simple-hide-ai-landing"
+
+      - name: Deploy on VPS
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USER }}
+          key: ${{ secrets.VPS_SSH_KEY }}
+          script: |
+            set -e
+            mkdir -p ~/apps/simple-hide-ai-landing/current
+            cd ~/apps/simple-hide-ai-landing/current
+            tar -xzf ../build-artifact.tar.gz
+            # Ensure Node and PM2 are installed
+            if ! command -v node >/dev/null 2>&1; then
+              curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
+              sudo apt-get install -y nodejs
+            fi
+            if ! command -v pm2 >/dev/null 2>&1; then
+              sudo npm i -g pm2
+            fi
+            # Install deps (only production deps are needed for start)
+            npm ci --omit=dev
+            # Start or reload with PM2
+            if pm2 describe simple-hide-ai-landing >/dev/null 2>&1; then
+              pm2 reload simple-hide-ai-landing
+            else
+              pm2 start ecosystem.config.js
+            fi
+            pm2 save
+            # Optionally enable PM2 startup
+            pm2 startup systemd -u $USER --hp $HOME 
