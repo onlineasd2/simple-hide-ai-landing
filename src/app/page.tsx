@@ -1,8 +1,20 @@
 export default function Home() {
     return (
         <>
-            <section className="min-h-screen bg-[#f0f0f0] text-[#212121] flex justify-center px-4 sm:px-8 lg:px-[120px]">
-                <div className="w-full max-w-[1440px] md:pb-[140px] md:pt-[60px] grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            <section className="relative min-h-screen bg-[#f0f0f0] text-[#212121] flex justify-center px-4 sm:px-8 lg:px-[120px] overflow-hidden">
+                {/* Colored orbs behind glass */}
+                <div className="absolute inset-0 pointer-events-none">
+                    <div className="absolute top-20 left-20 w-80 h-80 rounded-full blur-3xl opacity-50" style={{background: "radial-gradient(circle, #3B82F6 0%, rgba(59,130,246,0) 70%)"}} />
+                    <div className="absolute top-40 right-32 w-72 h-72 rounded-full blur-3xl opacity-45" style={{background: "radial-gradient(circle, #EF4444 0%, rgba(239,68,68,0) 70%)"}} />
+                    <div className="absolute bottom-32 left-40 w-64 h-64 rounded-full blur-3xl opacity-55" style={{background: "radial-gradient(circle, #F59E0B 0%, rgba(245,158,11,0) 70%)"}} />
+                    <div className="absolute bottom-20 right-20 w-56 h-56 rounded-full blur-3xl opacity-40" style={{background: "radial-gradient(circle, #8B5CF6 0%, rgba(139,92,246,0) 70%)"}} />
+                    <div className="absolute top-60 left-1/2 w-48 h-48 rounded-full blur-3xl opacity-35" style={{background: "radial-gradient(circle, #10B981 0%, rgba(16,185,129,0) 70%)"}} />
+                </div>
+                
+                {/* Frosted glass overlay */}
+                <div className="absolute inset-0 bg-white/25 backdrop-blur-md frosted-glass"></div>
+                
+                <div className="relative w-full max-w-[1440px] md:pb-[140px] md:pt-[60px] grid grid-cols-1 lg:grid-cols-12 gap-8 items-center z-10">
                     <div className="lg:pl-30 lg:col-span-6 flex flex-col justify-center items-center lg:items-start text-center lg:text-left">
                         <div className="flex items-center justify-center lg:justify-start gap-4 mb-4">
                             <img
@@ -38,18 +50,18 @@ export default function Home() {
                         </p>
 
                         <div className="flex flex-col sm:flex-row gap-4 mt-6 font-bold text-lg justify-center lg:justify-start">
-                            <button className="cursor-pointer hover:bg-(--accent-active) hover:text-white transition-colors w-[140px] h-[52px] rounded-[14px] text-(--color-accent) bg-white border border-(--color-accent)">
-                                <a href="#cards">Learn more</a>
-                            </button>
-                            <button className="cursor-pointer hover:bg-(--accent-active) hover:text-white transition-colors w-[140px] h-[52px] rounded-[14px] text-white bg-(--color-accent)">
-                                <a href="#pricing">Try</a>
-                            </button>
+                            <a href="#cards" className="cursor-pointer hover:bg-(--accent-active) hover:text-white transition-colors w-[140px] h-[52px] rounded-[14px] text-(--color-accent) bg-white border border-(--color-accent) inline-flex items-center justify-center">
+                                Learn more
+                            </a>
+                            <a href="#pricing" className="cursor-pointer hover:bg-(--accent-active) hover:text-white transition-colors w-[140px] h-[52px] rounded-[14px] text-white bg-(--color-accent) inline-flex items-center justify-center">
+                                Try
+                            </a>
                         </div>
                     </div>
 
                     <div className="lg:col-span-6 flex justify-center">
                         <img
-                            className="w-[300px] sm:w-[400px] md:w-[500px] lg:w-[584px] max-h-[584px] object-contain"
+                            className=" w-[300px] sm:w-[400px] md:w-[500px] lg:w-[584px] max-h-[584px] object-contain"
                             src="/app-ui.webp"
                             alt="App UI"
                         />
@@ -74,7 +86,7 @@ export default function Home() {
                                 className="w-20 h-20 object-contain mb-4"
                             />
                             <h3 className="text-xl font-semibold mb-2 text-(--color-accent) group-hover:text-white">Always at hand</h3>
-                            <p className="text-gray-600 group-hover:text-white">
+                            <p className="group-hover:text-white">
                                 This is a cool solution for interviews or other moments when you need a hint from AI.
                             </p>
                         </div>
@@ -87,7 +99,7 @@ export default function Home() {
                                 className="w-20 h-20 object-contain mb-4"
                             />
                             <h3 className="text-xl font-semibold mb-2 text-(--color-accent) group-hover:text-white">Invisible to others</h3>
-                            <p className="text-gray-600 group-hover:text-white">
+                            <p className="group-hover:text-white">
                                 This app is protected from all types of screen displays and recordings. It is only visible on your monitor.
                             </p>
                         </div>
@@ -108,7 +120,7 @@ export default function Home() {
                 </div>
             </section>
 
-            <section className="min-h-screen-auto bg-(--color-accent) text-white flex justify-center px-4 sm:px-8 lg:px-[120px] py-16">
+            <section className="min-h-screen-auto bg-gradient-to-br from-[#7D58D9] to-[#9b73ff] text-white flex justify-center px-4 sm:px-8 lg:px-[120px] py-16">
                 <div className="flex flex-col gap-6 w-full max-w-6xl">
                     <div className="flex flex-col md:flex-row gap-6">
                         {/* Левая карточка */}
@@ -138,7 +150,7 @@ export default function Home() {
                 </div>
             </section>
 
-            <section className="bg-(--color-accent) text-[white] flex justify-center px-4 sm:px-8 lg:px-[120px] py-16">
+            <section className="bg-gradient-to-r from-[#7D58D9] to-[#9b73ff] text-[white] flex justify-center px-4 sm:px-8 lg:px-[120px] py-16">
                 <div className="w-full max-w-screen-xl text-center">
                     <h2 className="text-3xl sm:text-4xl font-bold">
                         No registration required
@@ -147,8 +159,20 @@ export default function Home() {
             </section>
 
 
-            <section id="pricing" className="bg-[#f0f0f0] text-(--color-accent) flex justify-center px-4 sm:px-8 lg:px-[120px] py-16">
-                <div className="w-full max-w-screen-xl text-center">
+            <section id="pricing" className="relative bg-[#f0f0f0] text-(--color-accent) flex justify-center px-4 sm:px-8 lg:px-[120px] py-16 overflow-hidden">
+                {/* Animated colored orbs behind glass */}
+                <div className="absolute inset-0 pointer-events-none">
+                    <div className="absolute top-16 left-16 w-72 h-72 rounded-full blur-3xl opacity-85" style={{background: "radial-gradient(circle, #3B82F6 0%, rgba(59,130,246,0) 70%)", animation: "float1 8s ease-in-out infinite"}} />
+                    <div className="absolute top-32 right-24 w-64 h-64 rounded-full blur-3xl opacity-80" style={{background: "radial-gradient(circle, #EF4444 0%, rgba(239,68,68,0) 70%)", animation: "float2 10s ease-in-out infinite"}} />
+                    <div className="absolute bottom-24 left-32 w-56 h-56 rounded-full blur-3xl opacity-90" style={{background: "radial-gradient(circle, #F59E0B 0%, rgba(245,158,11,0) 70%)", animation: "float3 12s ease-in-out infinite"}} />
+                    <div className="absolute bottom-16 right-16 w-48 h-48 rounded-full blur-3xl opacity-75" style={{background: "radial-gradient(circle, #8B5CF6 0%, rgba(139,92,246,0) 70%)", animation: "float4 9s ease-in-out infinite"}} />
+                    <div className="absolute top-48 left-1/2 w-40 h-40 rounded-full blur-3xl opacity-70" style={{background: "radial-gradient(circle, #10B981 0%, rgba(16,185,129,0) 70%)", animation: "float5 11s ease-in-out infinite"}} />
+                </div>
+                
+                {/* Frosted glass overlay */}
+                <div className="absolute inset-0 bg-white/40 backdrop-blur-md frosted-glass"></div>
+                
+                <div className="relative w-full max-w-screen-xl text-center z-10">
                     <h2 className="max-w-[920px] text-3xl sm:text-4xl mx-auto font-bold mb-12">
                         Use the power of AI during interviews, exams,
                         or live demos — without ever being seen.
