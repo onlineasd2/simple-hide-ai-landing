@@ -42,7 +42,7 @@ export default function Home() {
                                 <a href="#cards">Learn more</a>
                             </button>
                             <button className="cursor-pointer hover:bg-(--accent-active) hover:text-white transition-colors w-[140px] h-[52px] rounded-[14px] text-white bg-(--color-accent)">
-                                Try
+                                <a href="#pricing">Try</a>
                             </button>
                         </div>
                     </div>
@@ -147,7 +147,7 @@ export default function Home() {
             </section>
 
 
-            <section className="bg-[#f0f0f0] text-(--color-accent) flex justify-center px-4 sm:px-8 lg:px-[120px] py-16">
+            <section id="pricing" className="bg-[#f0f0f0] text-(--color-accent) flex justify-center px-4 sm:px-8 lg:px-[120px] py-16">
                 <div className="w-full max-w-screen-xl text-center">
                     <h2 className="max-w-[920px] text-3xl sm:text-4xl mx-auto font-bold mb-12">
                         Use the power of AI during interviews, exams,
@@ -163,7 +163,7 @@ export default function Home() {
                                 🖥️ Only Windows (Mac OS coming soon)</p>
                             <div className="flex flex-col sm:flex-row gap-4 mt-6 font-bold text-lg justify-center lg:justify-center md: items-center">
                                 <button className="cursor-pointer hover:bg-(--accent-active) hover:text-white transition-colors duration-200 w-[180px] h-[52px] rounded-[14px] text-(--color-accent) bg-white border border-(--color-accent)">
-                                    $5/month
+                                    <a href="https://mailonline.gumroad.com/l/simplehiddenai?wanted=true">5$</a>
                                 </button>
                                 <button className="cursor-pointer hover:bg-(--accent-active) hover:text-white transition-colors w-[180px] h-[52px] rounded-[14px] text-white bg-(--color-accent)">
                                     $48/year(-20%)
