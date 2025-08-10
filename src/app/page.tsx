@@ -186,12 +186,12 @@ export default function Home() {
                                 🔒 No signup, fully anonymous<br></br>
                                 🖥️ Only Windows (Mac OS coming soon)</p>
                             <div className="flex flex-col sm:flex-row gap-4 mt-6 font-bold text-lg justify-center lg:justify-center md: items-center">
-                                <button className="cursor-pointer hover:bg-(--accent-active) hover:text-white transition-colors duration-200 w-[180px] h-[52px] rounded-[14px] text-(--color-accent) bg-white border border-(--color-accent)">
-                                    <a href="https://mailonline.gumroad.com/l/simplehiddenai?wanted=true">5$/month</a>
-                                </button>
-                                <button className="cursor-pointer hover:bg-(--accent-active) hover:text-white transition-colors w-[180px] h-[52px] rounded-[14px] text-white bg-(--color-accent)">
-                                    <a href="https://mailonline.gumroad.com/l/onuuv?wanted=true">$48/year(-20%)</a>
-                                </button>
+                                <a href="https://mailonline.gumroad.com/l/simplehiddenai?wanted=true" className="cursor-pointer hover:bg-(--accent-active) hover:text-white transition-colors duration-200 w-[180px] h-[52px] rounded-[14px] text-(--color-accent) bg-white border border-(--color-accent) inline-flex items-center justify-center">
+                                    5$/month
+                                </a>
+                                <a href="https://mailonline.gumroad.com/l/onuuv?wanted=true" className="cursor-pointer hover:bg-(--accent-active) hover:text-white transition-colors w-[180px] h-[52px] rounded-[14px] text-white bg-(--color-accent) inline-flex items-center justify-center">
+                                    $48/year(-20%)
+                                </a>
                             </div>
                             <p className="mt-4 text-xs text-gray-500 text-center">
                                 By purchasing, you agree to NOT dispute any payments! There is a zero refund policy for every payments!
