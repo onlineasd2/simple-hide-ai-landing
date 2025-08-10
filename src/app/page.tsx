@@ -112,7 +112,7 @@ export default function Home() {
                                 className="w-20 h-20 object-contain mb-4"
                             />
                             <h3 className="text-xl font-semibold mb-2 text-(--color-accent) group-hover:text-white">Higher chances of passing an ace interview</h3>
-                            <p className="text-gray-600 group-hover:text-white">
+                            <p className="group-hover:text-white">
                                 This is a cool solution for interviews or other moments when you need a hint from AI.
                             </p>
                         </div>
