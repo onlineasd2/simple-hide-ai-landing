@@ -193,6 +193,9 @@ export default function Home() {
                                     <a href="https://mailonline.gumroad.com/l/onuuv?wanted=true">$48/year(-20%)</a>
                                 </button>
                             </div>
+                            <p className="mt-4 text-xs text-gray-500 text-center">
+                                By purchasing, you agree to NOT dispute any payments! There is a zero refund policy for every payments!
+                            </p>
                         </div>
                     </div>
                 </div>
