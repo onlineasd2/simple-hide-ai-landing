@@ -47,8 +47,10 @@ export default function RootLayout({
             <Script
               src="https://www.googletagmanager.com/gtag/js?id=G-CQCY7ZYPNL"
               strategy="afterInteractive"
+              type="text/plain"
+              data-cookieconsent="statistics"
             />
-            <Script id="gtag-init" strategy="afterInteractive">
+            <Script id="gtag-init" strategy="afterInteractive" type="text/plain" data-cookieconsent="statistics">
               {`
                 window.dataLayer = window.dataLayer || [];
                 function gtag(){dataLayer.push(arguments);} 
