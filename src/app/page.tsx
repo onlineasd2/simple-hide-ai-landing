@@ -50,10 +50,10 @@ export default function Home() {
                         </p>
 
                         <div className="flex flex-col sm:flex-row gap-4 mt-6 font-bold text-lg justify-center lg:justify-start">
-                            <a href="#cards" className="cursor-pointer hover:bg-(--accent-active) hover:text-white transition-colors w-[140px] h-[52px] rounded-[14px] text-(--color-accent) bg-white border border-(--color-accent) inline-flex items-center justify-center">
+                            <a id="button_learn" href="#cards" className="cursor-pointer hover:bg-(--accent-active) hover:text-white transition-colors w-[140px] h-[52px] rounded-[14px] text-(--color-accent) bg-white border border-(--color-accent) inline-flex items-center justify-center">
                                 Learn more
                             </a>
-                            <a href="#pricing" className="cursor-pointer hover:bg-(--accent-active) hover:text-white transition-colors w-[140px] h-[52px] rounded-[14px] text-white bg-(--color-accent) inline-flex items-center justify-center">
+                            <a id="button_try"  href="#pricing" className="cursor-pointer hover:bg-(--accent-active) hover:text-white transition-colors w-[140px] h-[52px] rounded-[14px] text-white bg-(--color-accent) inline-flex items-center justify-center">
                                 Try
                             </a>
                         </div>
@@ -186,10 +186,10 @@ export default function Home() {
                                 🔒 No signup, fully anonymous<br></br>
                                 🖥️ Only Windows (Mac OS coming soon)</p>
                             <div className="flex flex-col sm:flex-row gap-4 mt-6 font-bold text-lg justify-center lg:justify-center md: items-center">
-                                <a href="https://mailonline.gumroad.com/l/simplehiddenai?wanted=true" className="cursor-pointer hover:bg-(--accent-active) hover:text-white transition-colors duration-200 w-[180px] h-[52px] rounded-[14px] text-(--color-accent) bg-white border border-(--color-accent) inline-flex items-center justify-center">
+                                <a id="button_five_dollars" href="https://mailonline.gumroad.com/l/simplehiddenai?wanted=true" className="cursor-pointer hover:bg-(--accent-active) hover:text-white transition-colors duration-200 w-[180px] h-[52px] rounded-[14px] text-(--color-accent) bg-white border border-(--color-accent) inline-flex items-center justify-center">
                                     5$/month
                                 </a>
-                                <a href="https://mailonline.gumroad.com/l/onuuv?wanted=true" className="cursor-pointer hover:bg-(--accent-active) hover:text-white transition-colors w-[180px] h-[52px] rounded-[14px] text-white bg-(--color-accent) inline-flex items-center justify-center">
+                                <a id="button_forty_eight_dollars" href="https://mailonline.gumroad.com/l/onuuv?wanted=true" className="cursor-pointer hover:bg-(--accent-active) hover:text-white transition-colors w-[180px] h-[52px] rounded-[14px] text-white bg-(--color-accent) inline-flex items-center justify-center">
                                     $48/year(-20%)
                                 </a>
                             </div>
