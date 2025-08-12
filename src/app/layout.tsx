@@ -50,26 +50,50 @@ export default function RootLayout({
             <meta name="color-scheme" content="light dark" />
             <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="16a9ac60-a151-41aa-9f0b-7e90d7855310" type="text/javascript" async></script>
 
-            {/* Google tag (gtag.js) in head */}
+            {/* Google tag (gtag.js) loader in head without gating to allow detection */}
             <Script
               src="https://www.googletagmanager.com/gtag/js?id=G-CQCY7ZYPNL"
               strategy="afterInteractive"
-              type="text/plain"
-              data-cookieconsent="statistics"
             />
-            <Script id="gtag-init" strategy="afterInteractive" type="text/plain" data-cookieconsent="statistics">
+            {/* Consent Mode default (denied) and init */}
+            <Script id="gtag-consent-default" strategy="afterInteractive">
               {`
                 window.dataLayer = window.dataLayer || [];
                 function gtag(){dataLayer.push(arguments);} 
+                gtag('consent', 'default', {
+                  'ad_storage': 'denied',
+                  'analytics_storage': 'denied',
+                  'functionality_storage': 'denied',
+                  'personalization_storage': 'denied',
+                  'security_storage': 'granted'
+                });
                 gtag('js', new Date());
+              `}
+            </Script>
+            {/* Update consent based on Cookiebot categories when ready */}
+            <Script id="gtag-consent-update" strategy="afterInteractive">
+              {`
+                window.addEventListener('CookiebotOnConsentReady', function() {
+                  try {
+                    var stats = window.Cookiebot && window.Cookiebot.consent && window.Cookiebot.consent.statistics;
+                    var marketing = window.Cookiebot && window.Cookiebot.consent && window.Cookiebot.consent.marketing;
+                    gtag('consent', 'update', {
+                      'analytics_storage': stats ? 'granted' : 'denied',
+                      'ad_storage': marketing ? 'granted' : 'denied'
+                    });
+                  } catch (e) {}
+                });
+              `}
+            </Script>
+            {/* GA4 config */}
+            <Script id="gtag-ga4-config" strategy="afterInteractive">
+              {`
                 gtag('config', 'G-CQCY7ZYPNL');
               `}
             </Script>
-            {/* Google Ads (gtag) config in head */}
-            <Script id="gtag-ads-config" strategy="afterInteractive" type="text/plain" data-cookieconsent="statistics">
+            {/* Google Ads (AW) config */}
+            <Script id="gtag-ads-config" strategy="afterInteractive">
               {`
-                window.dataLayer = window.dataLayer || [];
-                function gtag(){dataLayer.push(arguments);} 
                 gtag('config', 'AW-17468243127');
               `}
             </Script>
