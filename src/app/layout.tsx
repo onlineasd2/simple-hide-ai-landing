@@ -52,7 +52,7 @@ export default function RootLayout({
 
             {/* Google tag (gtag.js) loader in head without gating to allow detection */}
             <Script
-              src="https://www.googletagmanager.com/gtag/js?id=G-CQCY7ZYPNL"
+              src="https://www.googletagmanager.com/gtag/js?id=AW-17468243127"
               strategy="afterInteractive"
             />
             {/* Consent Mode default (denied) and init */}
