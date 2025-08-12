@@ -49,17 +49,8 @@ export default function RootLayout({
             <meta name="theme-color" content="#7D58D9" />
             <meta name="color-scheme" content="light dark" />
             <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="16a9ac60-a151-41aa-9f0b-7e90d7855310" type="text/javascript" async></script>
-        </head>
-        <body className={inter.className}>
-            {/* Google Tag Manager (noscript) */}
-            <noscript>
-              <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TPWRNL5M" height="0" width="0" style={{display:'none',visibility:'hidden'}}></iframe>
-            </noscript>
 
-            <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-blue-600 text-white px-4 py-2 rounded z-50">
-                Skip to main content
-            </a>
-            {/* Google tag (gtag.js) */}
+            {/* Google tag (gtag.js) in head */}
             <Script
               src="https://www.googletagmanager.com/gtag/js?id=G-CQCY7ZYPNL"
               strategy="afterInteractive"
@@ -74,7 +65,7 @@ export default function RootLayout({
                 gtag('config', 'G-CQCY7ZYPNL');
               `}
             </Script>
-            {/* Google Ads (gtag) config */}
+            {/* Google Ads (gtag) config in head */}
             <Script id="gtag-ads-config" strategy="afterInteractive" type="text/plain" data-cookieconsent="statistics">
               {`
                 window.dataLayer = window.dataLayer || [];
@@ -82,6 +73,16 @@ export default function RootLayout({
                 gtag('config', 'AW-17468243127');
               `}
             </Script>
+        </head>
+        <body className={inter.className}>
+            {/* Google Tag Manager (noscript) */}
+            <noscript>
+              <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TPWRNL5M" height="0" width="0" style={{display:'none',visibility:'hidden'}}></iframe>
+            </noscript>
+
+            <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-blue-600 text-white px-4 py-2 rounded z-50">
+                Skip to main content
+            </a>
             {children}
         </body>
     </html>
