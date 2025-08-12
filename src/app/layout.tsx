@@ -1,6 +1,7 @@
 import "./globals.css";
 import { Inter } from "next/font/google";
 import type { Metadata } from "next";
+import Script from "next/script";
 
 const inter = Inter({
     subsets: ["latin"],
@@ -34,18 +35,16 @@ export default function RootLayout({
         <meta name="color-scheme" content="light dark" />
         <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="16a9ac60-a151-41aa-9f0b-7e90d7855310" type="text/javascript" async></script>
 
-        {/* Google tag (gtag.js) - Ads only, as per Google instructions */}
-        <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17468243127"></script>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);} 
-              gtag('js', new Date());
-              gtag('config', 'AW-17468243127');
-            `,
-          }}
-        />
+        {/* <!-- Google tag (gtag.js) --> */}
+        <Script src="https://www.googletagmanager.com/gtag/js?id=AW-17468243127" strategy="beforeInteractive" />
+        <Script id="gtag-init-ads" strategy="beforeInteractive" dangerouslySetInnerHTML={{
+          __html: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){window.dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'AW-17468243127');
+          `,
+        }} />
       </head>
       <body className={inter.className}>
         <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-blue-600 text-white px-4 py-2 rounded z-50">Skip to main content</a>
