@@ -74,6 +74,14 @@ export default function RootLayout({
                 gtag('config', 'G-CQCY7ZYPNL');
               `}
             </Script>
+            {/* Google Ads (gtag) config */}
+            <Script id="gtag-ads-config" strategy="afterInteractive" type="text/plain" data-cookieconsent="statistics">
+              {`
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);} 
+                gtag('config', 'AW-17468243127');
+              `}
+            </Script>
             {children}
         </body>
     </html>
